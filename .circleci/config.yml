@@ -8,12 +8,6 @@ jobs:
       - restore_cache:
           key: hcsp-{{ checksum "pom.xml" }}
       - run:
-<<<<<<< HEAD
-=======
-          name: Verify whitelist
-          command: ./.circleci/verifyWhitelist.sh
-      - run:
->>>>>>> 16f2542f07674151fefb30fa8ca2f1622e0f244b
           name: Run Maven verify
           command: mvn clean verify -PmavenCentral
       - save_cache: # saves the project dependencies
