@@ -10,6 +10,7 @@ import java.net.URL;
 
 public class Main {
     public static void main(String[] args) throws IOException {
+        // 获取地址
         URL url = new URL ("https://sina.cn/");
         HttpURLConnection connection = (HttpURLConnection) url.openConnection ();
         connection.setRequestMethod ("GET");
