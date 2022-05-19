@@ -52,7 +52,6 @@
         </profile>
     </profiles>
     <dependencies>
-<<<<<<< HEAD
         <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
@@ -93,8 +92,8 @@
             <version>5.6.0</version>
             <scope>test</scope>
         </dependency>
-=======
->>>>>>> 16f2542f07674151fefb30fa8ca2f1622e0f244b
+
+
 
     </dependencies>
 
