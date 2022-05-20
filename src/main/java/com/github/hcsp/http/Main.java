@@ -20,6 +20,7 @@ import java.util.Set;
 
 public class Main {
     public static void main(String[] args) throws IOException {
+
         // 待处理的链接池
             List<String> linkPool = new ArrayList<> ();
             //已经处理过的链接池
@@ -91,6 +92,8 @@ public class Main {
     private static boolean isNewsPage(String link) {
        return link.contains ("news.sina.cn");
     }
+
+
 
     private static boolean isNotLoggedInPage(String link) {
         return !link.contains("passport.sina.cn");
