@@ -15,9 +15,7 @@ import java.io.IOException;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Locale;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Main {
@@ -28,9 +26,8 @@ public class Main {
     public static void main(String[] args) throws IOException, SQLException {
         // 书册数据库驱动
         String URL = "jdbc:h2:file:/Users/a/IdeaProjects/xiedaimala-crawler/news";
-        Connection connection = DriverManager.getConnection(URL,"root","root");
+        Connection connection = DriverManager.getConnection(URL, "root", "root");
         String link;
-        // 从数据库中加载下一个链接，如果能加载到，则进行下一个循环
         while ((link = getNextLinkThenDelete(connection)) != null) {
                 if (isLinkProcessed(connection, link)) {
                     continue;
@@ -41,7 +38,7 @@ public class Main {
                     Document doc = httpGetAndParseHtml(link);
                     parseUrlsFromPageAndStoreIntoDatabase(connection, doc);
                     // 假如这是一个新闻页面，就存入数据库，否则，就什么都不做
-                    storeIntoDataBaseIfItIsNewsPage (connection,doc,link);
+                    storeIntoDataBaseIfItIsNewsPage (connection, doc, link);
                     updateDatabase(connection, link, "Insert  into links_already_processed(link) values(?)");
                 }
             }
@@ -101,7 +98,7 @@ public class Main {
     }
 
 
-    private static void storeIntoDataBaseIfItIsNewsPage(Connection connection,Document doc, String link) throws SQLException {
+    private static void storeIntoDataBaseIfItIsNewsPage(Connection connection, Document doc, String link) throws SQLException {
         ArrayList<Element> articleTags = doc.select("article");
         if (!articleTags.isEmpty ()) {
             for (Element articleTag : articleTags) {
@@ -112,10 +109,9 @@ public class Main {
                 // 插入数据库中
 
                 try (PreparedStatement statement = connection.prepareStatement("insert into news (url,title,content,created_at,modified_at) values(?,?,?,now(),now())")) {
-
-                    statement.setString(1,link);
-                    statement.setString(2,title);
-                    statement.setString(3,content);
+                    statement.setString(1, link);
+                    statement.setString(2, title);
+                    statement.setString(3, content);
                     statement.executeUpdate();
                 }
 

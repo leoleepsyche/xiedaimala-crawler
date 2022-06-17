@@ -25,6 +25,7 @@ hs_err_pid*
 <<<<<<< HEAD
 .idea/
 target/
+*.db
 =======
 
 >>>>>>> 16f2542f07674151fefb30fa8ca2f1622e0f244b
