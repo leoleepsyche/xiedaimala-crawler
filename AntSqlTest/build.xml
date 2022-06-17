@@ -1,0 +1,14 @@
+<target name="build-tables"
+  description="Create database tables">
+  <sql
+    driver="${DB.DRIVER}"
+    url="${DB.URL}"
+    userid="${DB.USER}"
+    password="${DB.PASSWORD}"
+    classpathref="CLASSPATH"
+    delimiter="${DB.DELIMITER}"
+    autocommit="false" onerror="abort">
+    <transaction src=
+  "./sql/${DB.VENDOR}/create-tables.sql"/>
+  </sql>
+</target>
